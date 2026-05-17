@@ -2,6 +2,49 @@
 
 All notable changes to Hippo are documented in this file.
 
+## [v0.1.0-alpha.5] - 2026-05-17
+
+
+### Documentation
+
+- Close HIP-93 acceptance ([d0b896a](https://github.com/Forja-Labs-Mx/hippo/commit/d0b896a8bb050f45a299e9f6685796cc5eb05b25))
+- Clarify beta close tracking ([dad519d](https://github.com/Forja-Labs-Mx/hippo/commit/dad519db11d6d122f77b22e58a256adcbafa3c56))
+
+
+### Features
+
+- Enable Astro view transitions across pages ([e276add](https://github.com/Forja-Labs-Mx/hippo/commit/e276add2de83fc44d760cfa50e429ab29554e858))
+- Add OG image and Twitter large-summary card ([332458b](https://github.com/Forja-Labs-Mx/hippo/commit/332458b954161b730ac6d475f72c2843da755a76))
+- Make landing and anatomy pages mobile-responsive ([f7a4f39](https://github.com/Forja-Labs-Mx/hippo/commit/f7a4f39a1c7fd5d152e1ee24195a10db41b384ff))
+- Dispatch prompt embedding jobs ([49b7ec3](https://github.com/Forja-Labs-Mx/hippo/commit/49b7ec3d7d201ddb2e766d4242210d77c4bceed5))
+- Expose learning tools ([23ed5ce](https://github.com/Forja-Labs-Mx/hippo/commit/23ed5ce1b6b9750dabbd49381d466354ac94d086))
+- Enqueue prompt embedding jobs ([1fecdda](https://github.com/Forja-Labs-Mx/hippo/commit/1fecdda3b8e3f7ec1960faa54063e6fd373a7aaf))
+- Embed learnings through job runner ([fc55912](https://github.com/Forja-Labs-Mx/hippo/commit/fc55912eb8fbf73ffc2aafa6652e463ae689e6ae))
+- Split agents step into independent MCP + skill installs ([5ccac9e](https://github.com/Forja-Labs-Mx/hippo/commit/5ccac9ee331cc004d9f0f78577b0f9c2020c717c))
+- Upgrade local identity when remote is added ([8c7dcc0](https://github.com/Forja-Labs-Mx/hippo/commit/8c7dcc0f9bf1b75ed36cf3fbe413d8816ec07c98))
+- Partition learnings in retrieval ([63b8028](https://github.com/Forja-Labs-Mx/hippo/commit/63b8028f5f2f0377ce5384690641e9453cc664d4))
+- Add :prompts command palette ([bb6f112](https://github.com/Forja-Labs-Mx/hippo/commit/bb6f1128b568fa6d5c4072f46ec1bbb8d4682f71))
+- Activate Learnings tab with restricted verb surface ([d2c84e8](https://github.com/Forja-Labs-Mx/hippo/commit/d2c84e8bf848db936ca2c1847f0f99733fb34af9))
+- Memory detail prompt panels + linked-prompt filter chip ([2f3da09](https://github.com/Forja-Labs-Mx/hippo/commit/2f3da09471d8968b3b2a6ee99c9f308984948f61))
+
+
+### Fixes
+
+- Rerun anatomy reveal script on view transitions ([f1c6ef3](https://github.com/Forja-Labs-Mx/hippo/commit/f1c6ef3edb1e4e160e33c8b92901ad2c54e8a053))
+- Use absolute OG image URLs ([684ef92](https://github.com/Forja-Labs-Mx/hippo/commit/684ef9203182f3201a9565548cca6af9c261207b))
+- Guard OG image metadata ([1585b40](https://github.com/Forja-Labs-Mx/hippo/commit/1585b403619756cdae9eb39068b3976515cf4759))
+- Abort prior hero run before the mobile early-return ([4df7f3a](https://github.com/Forja-Labs-Mx/hippo/commit/4df7f3a999b6f83cf40946eede79dcafcafbd18d))
+- Carry content hash in embedding queue ([e24948e](https://github.com/Forja-Labs-Mx/hippo/commit/e24948ece91c97850d71db2816e1407090c5b48c))
+- Clarify embedding enqueue semantics ([f73182c](https://github.com/Forja-Labs-Mx/hippo/commit/f73182c8374a67962d9f27bd5a630757244d6b72))
+- Skip dangling embedding jobs ([e1597d3](https://github.com/Forja-Labs-Mx/hippo/commit/e1597d36d739425d51869f884b4b2f03154bd872))
+- Use monotonic token for learnings sources view ([0f1143b](https://github.com/Forja-Labs-Mx/hippo/commit/0f1143b8828873c16498a5a287504c254c1c2ae9))
+- Enforce session + linked-prompt chips during text search ([e9622ae](https://github.com/Forja-Labs-Mx/hippo/commit/e9622ae8b14cd747793c95a847c0f47494a7c62c))
+
+
+### Tests
+
+- Assert prompt session start id ([55f4b34](https://github.com/Forja-Labs-Mx/hippo/commit/55f4b34254348f9de26809350771fed5d8199c8d))
+- Expand sqlite repo coverage ([d078b4f](https://github.com/Forja-Labs-Mx/hippo/commit/d078b4f04a4ebfed642e3f0f3b0886799334da2d))
 ## [v0.1.0-alpha.4] - 2026-05-15
 
 
@@ -9,6 +52,7 @@ All notable changes to Hippo are documented in this file.
 
 - Add MIT license publication guard ([b7369c8](https://github.com/Forja-Labs-Mx/hippo/commit/b7369c8e490eb8256a2571f1ff0e0a072a3bb8e2))
 - Rename repo port file ([9aa5b47](https://github.com/Forja-Labs-Mx/hippo/commit/9aa5b476df786f6c1badcacd6a40aec6fe545c31))
+- Prepare v0.1.0-alpha.4 ([164a0f5](https://github.com/Forja-Labs-Mx/hippo/commit/164a0f54857d02028b2b0ecfe38fe63ab3af8ec4))
 
 
 ### Features

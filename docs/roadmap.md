@@ -130,10 +130,13 @@ the change.
 
 ---
 
-## Beta 🟢
+## Beta ✅
 
-**Status.** Current — scope locked, plan committed; implementation in progress. See
-[`docs/plans/beta/`](plans/beta/).
+**Status.** Shipped — feature-complete per the
+[`docs/plans/beta/`](plans/beta/) plan. Debug TUI, onboarding TUIs,
+sessions, prompts, topic-key suggestion, learnings, and the Beta
+acceptance signals are all implemented and covered by unit +
+integration tests.
 
 **Theme.** TUI-first debug + agent ergonomics on top of the Alpha core.
 The user can finally see and curate their data; agents capture sessions
@@ -232,6 +235,16 @@ and prompts; Dream synthesizes learnings from reinforced clusters.
 - **Alpha acceptance signals continue to pass** (no regression).
 
 **Plan.** [`docs/plans/beta/`](plans/beta/).
+
+---
+
+## Beta post-shipment enhancements ✅
+
+**Status.** Shipped on top of Beta. This bucket is reserved for small,
+load-bearing additions that land before the next milestone and should be
+remembered with Beta rather than promoted into their own milestone.
+
+No post-shipment enhancements have landed yet.
 
 ---
 
