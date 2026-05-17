@@ -2,15 +2,19 @@
 
 A self-hosted, single-binary AI memory system for coding agents and humans.
 
-> **Status:** Alpha shipped. The Alpha milestone described in
-> [`docs/plans/alpha/`](docs/plans/alpha/) is feature-complete, with
-> follow-up enhancements layered on while the milestone settles: project
+> **Status:** Alpha. The Alpha milestone described in
+> [`docs/plans/alpha/`](docs/plans/alpha/) is feature-complete, but Hippo
+> remains in Alpha while real use shows what works, what doesn't, and what
+> should stabilize before any Beta commitment. Completed work that was
+> previously grouped under Beta is now folded into Alpha. Follow-up
+> enhancements have been layered on while the milestone settles: project
 > groups for grouped read visibility ([ADR-0034](docs/adr/0034-project-groups.md)),
 > ambient agent guidance via `hippo init` and the MCP policy surface
 > ([ADR-0035](docs/adr/0035-ambient-agent-guidance.md)), and an
 > agent-initiated promotion suggestion flow
 > ([ADR-0036](docs/adr/0036-agent-promotion-suggestions.md)). See
-> [`docs/roadmap.md`](docs/roadmap.md) for what's next.
+> [`docs/roadmap.md`](docs/roadmap.md) for the current Alpha discovery
+> posture; Beta is parked with no timeline.
 
 ## What it is
 
@@ -42,7 +46,7 @@ core data plane.
   destructive.
 - **Cross-project promotion.** Explicit `memory promote` plus Dream-suggested
   promotions reviewed via `hippo dream review` /
-  [`hippo_judge`](docs/adr/0028-cross-project-memory-elevation.md).
+  [`hippo_dream` mode `judge`](docs/adr/0028-cross-project-memory-elevation.md).
 - **Defense-in-depth privacy.** `<private>...</private>` spans are redacted
   at the store layer before anything is persisted or indexed.
 - **MCP-native.** Tools speak the [Model Context
@@ -153,28 +157,34 @@ and `--config <path>`.
 | `hippo dream run` | Deterministic Dream phases (decay, stale, duplicate, low-quality, missing-metadata). |
 | `hippo dream review` | Resolve a pending suggestion (`accept` / `accept_with_rewrite` / `dismiss`). |
 | `hippo dream install` / `uninstall` / `status` | Manage the recurring launchd/systemd job and inspect scheduled-run health. |
-| `hippo mcp serve` | Serve the full tool surface over stdio MCP. |
+| `hippo mcp serve` | Serve the default entity-router MCP surface over stdio MCP. |
+| `hippo mcp serve --surface legacy` | Serve the pre-router MCP tool surface for local eval/debug compatibility. |
+| `hippo mcp eval-toolset` | Compare model tool-use efficiency across legacy and entity MCP surfaces using the configured text provider. |
 
 Run any command with `--help` for full flag documentation.
 
 ## MCP tools
 
-`hippo mcp serve` exposes these tools to any MCP-compatible agent:
+`hippo mcp serve` exposes the compact entity-router surface by default:
 
-- **Project** — `hippo_project_ensure`, `hippo_project_group_create`,
-  `hippo_project_group_add`, `hippo_project_group_remove`,
-  `hippo_project_group_list`, `hippo_project_group_show`,
-  `hippo_project_group_relate`
-- **Memory** — `hippo_memory_add`, `hippo_memory_add_structured`,
-  `hippo_memory_get`, `hippo_memory_update`, `hippo_memory_archive`,
-  `hippo_memory_reinforce`, `hippo_memory_relate`,
-  `hippo_memory_suggest_promotion`, `hippo_memory_promote`
-- **Retrieval** — `hippo_search`, `hippo_memory_timeline`, `hippo_ask`
-- **Preferences** — `hippo_preference_set`, `hippo_preference_get`,
-  `hippo_preference_list`, `hippo_preference_delete`
-- **Dream / governance** — `hippo_judge`, `hippo_audit`
+- `hippo_memory(mode: "add" | "get" | "update" | "archive" |
+  "reinforce" | "relate" | "promote" | "suggest_promotion" |
+  "suggest_topic_key" | "timeline")`
+- `hippo_session(mode: "start" | "end" | "summary" | "get" | "list")`
+- `hippo_prompt(mode: "record" | "get" | "list" | "archive")`
+- `hippo_learning(mode: "get" | "list" | "update" | "archive" |
+  "unarchive" | "reinforce")`
+- `hippo_project(mode: "ensure" | "group_create" | "group_add" |
+  "group_remove" | "group_list" | "group_show" | "group_relate")`
+- `hippo_preference(mode: "set" | "get" | "list" | "delete")`
+- **Retrieval / governance** — `hippo_search`, `hippo_ask`, `hippo_audit`,
+  plus conditional `hippo_dream(mode: "judge")`
 - **Agent guidance** — server instructions plus `hippo_memory_policy` prompt and
   `hippo://memory-policy` resource.
+
+The pre-router per-verb tool catalog is available with
+`hippo mcp serve --surface legacy` for local comparison and short-term debug
+compatibility during alpha.
 
 Hard delete is intentionally CLI-only — see
 [ADR-0015](docs/adr/0015-hard-delete-cli-only.md).
@@ -186,7 +196,8 @@ Hard delete is intentionally CLI-only — see
   whole picture, or jump to a specific area.
 - [`docs/adr/`](docs/adr/) — architecture decision records. Every load-bearing
   technical choice is captured here with its context and consequences.
-- [`docs/roadmap.md`](docs/roadmap.md) — Alpha → Beta → 1.0 milestones.
+- [`docs/roadmap.md`](docs/roadmap.md) — current Alpha posture, parked Beta,
+  and unscheduled 1.0 / Future candidates.
 
 ## Development
 

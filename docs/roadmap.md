@@ -7,21 +7,23 @@ into a milestone when they're funded.
 
 Status legend:
 - ✅ **Shipped** — closed and frozen
-- 🟢 **Current** — actively being built
+- 🟢 **Current** — active focus
 - 🟡 **Planned** — committed, sequenced after the current milestone
+- ⏸️ **Parked** — deliberately out of the active plan; no timeline
 - 🔵 **Exploratory** — interesting, not yet committed
 - ⚪ **Future** — captured so it isn't lost; not promised
 
 ---
 
-## Alpha ✅
+## Alpha 🟢
 
-**Status.** Shipped — feature-complete per the
-[`docs/plans/alpha/`](plans/alpha/) plan. CLI, MCP stdio server, hybrid
-search, Dream-Mode hygiene, cross-project promotion, and launchd/systemd
-installers are all implemented and covered by unit + integration tests.
-Several post-shipment enhancements landed under the Alpha umbrella before
-Beta begins — see *Alpha post-shipment enhancements* below.
+**Status.** Current. The original Alpha implementation is feature-complete
+per the [`docs/plans/alpha/`](plans/alpha/) plan, and the product remains in
+Alpha while real use teaches us whether Hippo works, where it works, and where
+it doesn't. There is no deadline for moving to Beta. CLI, MCP stdio server,
+hybrid search, Dream-Mode hygiene, cross-project promotion, launchd/systemd
+installers, and the completed work previously grouped under Beta are now all
+part of Alpha. See *Alpha post-shipment enhancements* below.
 
 **Theme.** Local-first, single-binary memory system. Strict scoping,
 hybrid search, Dream-Mode hygiene, MCP-native. Everything else is deferred.
@@ -55,16 +57,15 @@ hybrid search, Dream-Mode hygiene, MCP-native. Everything else is deferred.
 
 **Out of scope (deferred to later milestones).**
 
-- Sessions, prompt capture, topic-key suggestion tool.
-- HTTP API (only CLI + MCP in Alpha; future HTTP should be exposed as
-  another `hippo` command from the same binary unless a later ADR splits
-  deployment artifacts).
+- HTTP API (current Alpha surfaces are CLI, MCP, and TUI; future HTTP
+  should be exposed as another `hippo` command from the same binary unless
+  a later ADR splits deployment artifacts).
 - Multi-device / cloud sync.
 - Windows scheduled-Dream installer.
 - Vector index via `vtab` module (BLOB + cosine is sufficient at personal
   scale).
 - Importing memories from other systems.
-- Web UI / TUI / dashboard.
+- Web UI / dashboard.
 - Auto-capture of raw agent tool calls — see ADR-0024 (this is a stated
   non-goal, not a deferral).
 
@@ -127,124 +128,60 @@ the change.
   `reinforcement_count`, and the source memory's `ProjectGroups`
   into the score and payload; agent-sourced suggestions include the
   same context for human/LLM review.
-
----
-
-## Beta ✅
-
-**Status.** Shipped — feature-complete per the
-[`docs/plans/beta/`](plans/beta/) plan. Debug TUI, onboarding TUIs,
-sessions, prompts, topic-key suggestion, learnings, and the Beta
-acceptance signals are all implemented and covered by unit +
-integration tests.
-
-**Theme.** TUI-first debug + agent ergonomics on top of the Alpha core.
-The user can finally see and curate their data; agents capture sessions
-and prompts; Dream synthesizes learnings from reinforced clusters.
-
-**In scope.**
-
-- **Debug TUI** entered via `hippo ui`. Multi-tab master-detail
+- **Debug TUI.** `hippo ui` provides a multi-tab master-detail surface
   (Memories | Sessions | Learnings | Review) with inline-chip filters,
-  `/` hybrid search, and archive-only CRUD (hard delete stays CLI-only
-  per [ADR-0015](adr/0015-hard-delete-cli-only.md)). Promotion-review
-  surface for Dream- and agent-suggested promotions. See
+  `/` hybrid search, archive-only destructive CRUD, and promotion-review
+  flows for Dream- and agent-suggested promotions. See
   [ADR-0037](adr/0037-tui-in-process-service-link.md) and
   [ADR-0038](adr/0038-tui-access-scope.md).
-- **Setup TUI** wrapping `hippo setup` and **Project-init TUI** wrapping
-  `hippo init`. Both wrap (not replace) the existing flag-based forms;
-  `--no-tui` and non-TTY callers keep the current path. See
-  [ADR-0042](adr/0042-onboarding-tui-wrap-pattern.md).
+- **Onboarding TUIs.** `hippo setup` and `hippo init` can run through
+  TUIs that wrap, rather than replace, the existing flag-based forms.
+  `--no-tui` and non-TTY callers keep the scripted path. See
+  [ADR-0042](adr/0042-onboarding-tui-wrap-pattern.md) and
+  [ADR-0043](adr/0043-onboarding-tui-shape.md).
 - **Sessions.** `hippo_session_start` / `_end` / `_summary` / `_get` /
-  `_list`. Explicit + stateless: callers carry `session_id`; Hippo
-  stores rows but holds no per-actor state. Schema adds `sessions` and
-  a nullable `memories.session_id` FK. New Dream LLM phase summarizes
-  closed-but-unsummarized sessions. See
-  [ADR-0039](adr/0039-sessions-explicit-stateless.md).
-- **Prompt capture.** Separate entity from memories with dual linkage
-  (explicit `memory_prompts` M:M for direct causal; session
-  co-membership for context). Schema adds `prompts`, `memory_prompts`,
-  `prompt_embeddings`. Prompts are immutable post-record, searchable
-  but rank-deprioritized in `hippo_search` and `hippo_ask`. See
+  `_list` group memories into explicit caller-owned work episodes.
+  Callers carry `session_id`; Hippo stores rows but holds no per-actor
+  state. See [ADR-0039](adr/0039-sessions-explicit-stateless.md).
+- **Prompt capture.** Prompts are separate immutable entities with dual
+  linkage: direct causal links through `memory_prompts` and contextual
+  linkage through session co-membership. See
   [ADR-0040](adr/0040-prompts-separate-entity.md).
-- **Topic-key suggestion tool.** Standalone `hippo_topic_key_suggest`
-  MCP tool + CLI mirror + Debug TUI integration in the new-memory form.
-  Never inline auto-suggest. See
+- **Topic-key suggestion.** `hippo_topic_key_suggest` helps agents and
+  users reuse an existing memory taxonomy without silently auto-selecting
+  a topic key. See
   [ADR-0041](adr/0041-topic-key-suggestion-tool.md).
-- **Learnings (memory → pattern promotion).** First-class entity parallel
-  to memories, Dream-promoted from reinforced clusters with LLM
-  synthesis. Hard-partitioned in `hippo_search` (Learnings block before
-  Memories block); learnings-first citation budget in `hippo_ask`.
-  Editable post-synthesis via `hippo_learning_update`; `human_edited_at`
-  marker blocks subsequent Dream rewrites. See
-  [ADR-0027](adr/0027-learnings-as-first-class-entity.md) (Accepted).
-
-**Out of scope (deferred to 1.0 or later milestones).**
-
-- **HTTP API.** No consumer in Beta after WebUI deferral. Revisit when
-  a real consumer (the WebUI, or an external script / extension)
-  drives the API shape.
-- **WebUI.** Deferred. When/if built, it will be a **local-only** Go
-  `net/http` + HTMX + `html/template` server bound to `127.0.0.1`,
-  single binary, no JavaScript toolchain.
-- **Windows scheduled Dream.** Task Scheduler installer is deferred —
-  current users are on macOS / Linux.
-- **Hard delete in the TUI** stays CLI-only per
-  [ADR-0015](adr/0015-hard-delete-cli-only.md). The TUI's destructive
-  primitive is *archive* (reversible via Unarchive).
-- **Bulk write operations in the TUI.** Single-row writes only in v1;
-  bulk earns its slice when usage shows the need.
-- **Multi-device / cloud sync.** Stays in 1.0.
-- **Vector index via `vtab` module.** BLOB + Go cosine is still
-  sufficient at personal scale.
-- **Auto-capture of raw agent tool calls.** Stated non-goal per
-  [ADR-0024](adr/0024-curated-memories-only.md).
-
-**Acceptance signals.**
-
-- `go build ./...` produces a CGO-free binary on macOS, Linux, Windows.
-- `go test ./...` and `go test -tags=integration ./...` are green —
-  including new `session/`, `prompt/`, `learning/` packages and the
-  three TUI trees (`tui/{widgets,setup,init,debug}/`).
-- **Onboarding TUI E2E** (`teatest`): fresh `hippo setup` completes
-  via TUI; re-run loads existing config as defaults; `--no-tui`
-  falls back to the flag-based form unchanged. `hippo init` writes
-  the project record and installs the agent-scaffolding files per
-  [ADR-0035](adr/0035-ambient-agent-guidance.md).
-- **Debug TUI E2E** (`teatest`): launch `hippo ui` over a seeded DB
-  spanning multiple projects; default view shows everything readable
-  with the CWD project pinned; filter chips, `/` hybrid search, CRUD
-  verbs, and the Review tab all round-trip through services.
-- **Sessions E2E**: `_start` → memory adds → `_end` → `_summary`;
-  Dream summary phase populates closed-but-unsummarized sessions.
-  Closed-session writes are rejected.
-- **Prompts E2E**: `_record` a prompt, link memories via
-  `prompt_ids`, browse via memory-detail panels, filter chip, and
-  `:prompts` palette. Search returns prompts with the `(prompt)`
-  indicator and rank-deprioritized score.
-- **Topic-key suggestion E2E**: tool returns top-5 with `exists`
-  flags scoped to the target catalog; LLM-unavailable returns the
-  envelope error pattern. TUI `tab` flow integrates suggestion into
-  the new-memory form.
-- **Learnings E2E**: Dream cluster-synthesis produces a `learning`
-  with linked `learning_sources`; manual edit sets `human_edited_at`;
-  subsequent Dream run does not rewrite the edited learning;
-  `hippo_search` hard-partitions; `hippo_ask` cites learnings first.
-- **Audit fidelity**: every TUI write produces an audit row with
-  `actor: tui`.
-- **Alpha acceptance signals continue to pass** (no regression).
-
-**Plan.** [`docs/plans/beta/`](plans/beta/).
+- **Learnings.** Dream can promote reinforced memory clusters into
+  first-class learnings, partitioned ahead of memories in search and
+  citation budgets. Human-edited learnings are protected from later Dream
+  rewrites. See
+  [ADR-0027](adr/0027-learnings-as-first-class-entity.md).
 
 ---
 
-## Beta post-shipment enhancements ✅
+## Beta ⏸️
 
-**Status.** Shipped on top of Beta. This bucket is reserved for small,
-load-bearing additions that land before the next milestone and should be
-remembered with Beta rather than promoted into their own milestone.
+**Status.** Parked. Beta is deliberately out of the active roadmap while
+Hippo stays in Alpha discovery. There is no timeline, deadline, or implied
+release train for moving from Alpha to Beta.
 
-No post-shipment enhancements have landed yet.
+**Theme.** To be redefined after sustained Alpha use. A future Beta should
+be justified by observed usage and pain, not by the existence of a prior plan.
+
+**Current commitment.** None. Completed work previously grouped under Beta has
+been folded into Alpha. The previous [`docs/plans/beta/`](plans/beta/)
+documents remain as historical planning material and implementation reference,
+but they are not the active roadmap, a release gate, or a commitment that a
+future Beta must ship that exact scope.
+
+**Questions before reviving Beta.**
+
+- Does Hippo reliably help real agents and humans remember useful context
+  across sessions?
+- Which workflows produce durable memories, and which produce noise?
+- Which surfaces are actually needed for curation: CLI, MCP, TUI, WebUI,
+  or something smaller?
+- Which features are essential enough to stabilize before any beta promise?
 
 ---
 
@@ -270,9 +207,10 @@ No post-shipment enhancements have landed yet.
 Captured so the ideas aren't lost. No commitment, no sequencing.
 
 - Local WebUI (HTMX-rendered, `127.0.0.1`-bound, single binary) for users
-  who'd rather click than navigate a TUI. Beta lands the TUI;
-  the WebUI may follow once a real consumer (the user themselves, or an
-  external integration) makes the API shape concrete.
+  who'd rather click than navigate a CLI or TUI. A prior Beta draft put TUI
+  first, but no Beta scope is currently committed; the WebUI may follow once
+  a real consumer (the user themselves, or an external integration) makes the
+  API shape concrete.
 - Multi-user / multi-tenant deployments.
 - Importer for memories from external systems.
 - Plugin/extension surface for custom Dream phases.
@@ -296,5 +234,6 @@ When adding a milestone:
    funded.
 
 When promoting a milestone from 🟡 Planned to 🟢 Current, update the status
-emoji and add the plan link. When closing a milestone, change to ✅ Shipped
-and freeze the section.
+emoji and add the plan link. When parking a milestone, mark it ⏸️ Parked and
+remove any implied scope or deadline. When closing a milestone, change to
+✅ Shipped and freeze the section.

@@ -2,6 +2,25 @@
 
 All notable changes to Hippo are documented in this file.
 
+## [v0.1.0-alpha.6] - 2026-05-17
+
+
+### Features
+
+- Add Dream Journal ([bb86138](https://github.com/Forja-Labs-Mx/hippo/commit/bb8613868d201c618d3dbebe66b2067101780181))
+
+
+### Fixes
+
+- Omit temperature for gpt-5-nano ([97d9891](https://github.com/Forja-Labs-Mx/hippo/commit/97d989180011844e4c1ef32bc94435871839df9e))
+- List grouped project sessions ([b25c3ac](https://github.com/Forja-Labs-Mx/hippo/commit/b25c3ac245ecb7050cc3bc33de7896ac0ed93b4d))
+- Enforce journal append-only schema ([9147472](https://github.com/Forja-Labs-Mx/hippo/commit/9147472ccbe546e231f6ce7fb55edb1114dabbc3))
+
+
+### Other
+
+- Reduce MCP tool count with entity routers ([17e86c1](https://github.com/Forja-Labs-Mx/hippo/commit/17e86c1913b4cfeb43d3b4efaf5dc800baefd23f))
+- Address MCP toolset review feedback ([bc3abb9](https://github.com/Forja-Labs-Mx/hippo/commit/bc3abb9ac461e56f5d96627c1c70fe2863ac1260))
 ## [v0.1.0-alpha.5] - 2026-05-17
 
 
