@@ -2,8 +2,53 @@
 
 All notable changes to Hippo are documented in this file.
 
+## [v0.1.0-alpha.7] - 2026-05-18
+
+
+### Fixes
+
+- Fix dream db path handling ([1733882](https://github.com/Forja-Labs-Mx/hippo/commit/1733882ed1e894a53a656ecaa546fd65e4bead0c))
+- Shrink LLM memory prompts ([09bf0f2](https://github.com/Forja-Labs-Mx/hippo/commit/09bf0f2407133f0cebcdf319f9839d31db383117))
+- Preserve zero prompt signals ([e9f5647](https://github.com/Forja-Labs-Mx/hippo/commit/e9f5647a79cf9a19a41efca42ab056b2654edf2e))
+- Accept category summary counts ([ef9c06b](https://github.com/Forja-Labs-Mx/hippo/commit/ef9c06b58ec99f19eb630d0e8a9093cffa08e095))
+- Report configured dream status schedule ([7fdd657](https://github.com/Forja-Labs-Mx/hippo/commit/7fdd657a9417abac3cbe3304afb43a26ac36b242))
+- Dedupe pending review suggestions ([1c9259f](https://github.com/Forja-Labs-Mx/hippo/commit/1c9259f4227fa197a944579490eaba38d145ec9b))
+- Default workspace root to cwd ([6edba01](https://github.com/Forja-Labs-Mx/hippo/commit/6edba01f22f50787ef7faf28c6951c2c248434d7))
+- Steer agents away from path:"/" arg ([17ddaf6](https://github.com/Forja-Labs-Mx/hippo/commit/17ddaf6c11517562f2341e6b19c82a6cf44dca07))
+- Stop baking --workspace-root into agent MCP configs ([447c238](https://github.com/Forja-Labs-Mx/hippo/commit/447c238647b52ff5d7b181e2f41a991e12f55d03))
+
+
+### Security
+
+- Migrate plaintext embedding key config ([1d53bc7](https://github.com/Forja-Labs-Mx/hippo/commit/1d53bc7b05bb6e3127e79fdc92aa2298134fb196))
+- Guard secret-shaped persisted content ([3741e4b](https://github.com/Forja-Labs-Mx/hippo/commit/3741e4b1d9ddb853c281834fdb2b170caab08d00))
+- Gate dream-synthesized learnings ([6aace9e](https://github.com/Forja-Labs-Mx/hippo/commit/6aace9e089148a588238285c2062ec73623f5f7e))
+- Require human-authored promotion rewrites ([e43a649](https://github.com/Forja-Labs-Mx/hippo/commit/e43a6492fed372fbbae111b3b13047b576672cf4))
+- Harden hippo ask context ([767a165](https://github.com/Forja-Labs-Mx/hippo/commit/767a16587550d58315bb27b9497cd35b49ef7664))
+- Pin MCP paths to workspace root ([e04ae47](https://github.com/Forja-Labs-Mx/hippo/commit/e04ae477b5f3b2da6264489149c6741e7a865140))
+- Harden provider config serialization ([f829aeb](https://github.com/Forja-Labs-Mx/hippo/commit/f829aeb5833a5c4a7d07ad9c234cb4a121c6975e))
+- Tighten managed home file permissions ([44dd1be](https://github.com/Forja-Labs-Mx/hippo/commit/44dd1bede218ab7e0154de876596a7569e25b543))
+- Verify embedded hippo-memory integrity ([6e7a61a](https://github.com/Forja-Labs-Mx/hippo/commit/6e7a61a0bcfd4fe90506c1a1f0ba3a0c7163fda7))
+
+
+### Tests
+
+- Prevent dream launchd test leaks ([d09c8ee](https://github.com/Forja-Labs-Mx/hippo/commit/d09c8ee72b8652c7fb81f2bf7190df223257ac6e))
+- Restore dream status config path ([1615e46](https://github.com/Forja-Labs-Mx/hippo/commit/1615e467b229281ddc8d8c70f9c952920cd0a375))
+- Pin integration test harnesses to workspace root ([b9ab0e1](https://github.com/Forja-Labs-Mx/hippo/commit/b9ab0e1cf3ecf684afcab52afb15e1c07ecd67e1))
 ## [v0.1.0-alpha.6] - 2026-05-17
 
+### Security
+
+- Gate Dream-synthesized learnings behind pending review before retrieval.
+- Add verifiable integrity checks for embedded hippo-memory skill files.
+- Fence and sanitize untrusted retrieved context in `hippo_ask`, with warning codes for context and answer guardrails.
+- Deprecate plaintext `embedding.api_key` in YAML config, add `hippo setup --migrate-embedding-key` to move legacy keys into the OS keyring, and reject the field for future `version: 2` configs.
+- Tighten Hippo-managed user file permissions for agent policy, MCP, and Dream scheduler files.
+- Harden setup provider config serialization and base URL validation to prevent YAML key injection.
+- Restrict MCP path resolution to a pinned workspace root and disable MCP project auto-provisioning by default.
+- Stop MCP clients from accepting Dream promotion rewrites sourced from LLM-authored suggestion payloads.
+- Guard memory, prompt, and audit writes against secret-shaped strings.
 
 ### Features
 

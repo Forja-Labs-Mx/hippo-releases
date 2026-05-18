@@ -102,8 +102,8 @@ CGO_ENABLED=0 go build -trimpath -o hippo ./apps/hippo
 Or, using the monorepo's Turborepo wiring:
 
 ```sh
-bun install
-bunx turbo run build --filter=@hippo/app
+aube install --ignore-scripts
+aube run --no-install turbo -- run build --filter=@hippo/app
 # binary lands at apps/hippo/dist/hippo
 ```
 
@@ -126,11 +126,12 @@ cd /path/to/project
 hippo init                                 # project registration and repo-local agent guidance
 ```
 
-During setup, Hippo supports Codex and Claude MCP installation and provider
-presets for OpenAI and Ollama. Setup can also opt into native notifications
-for background scheduled Dream failures; notifications are failure-only and
-do not fire for manual `hippo dream run` commands. For scripted installs,
-pass flags directly:
+During setup, Hippo installs MCP entries for any combination of Codex, Claude,
+Cursor, and OpenCode, and writes provider presets for OpenAI, Anthropic, or
+Ollama as the text provider and OpenAI or Ollama as the embedding provider.
+Setup can also opt into native notifications for background scheduled Dream
+failures; notifications are failure-only and do not fire for manual
+`hippo dream run` commands. For scripted installs, pass flags directly:
 
 ```sh
 hippo setup --agent codex --agent claude --text-provider openai --embedding-provider openai
@@ -138,9 +139,16 @@ hippo setup --agent codex --text-provider ollama --embedding-provider ollama --n
 ```
 
 The agent MCP entry runs `hippo mcp serve`; users normally do not run that
-command directly. The CLI commands below remain available for manual curation,
-debugging, and advanced workflows. Every command supports `--output text|json`
-and `--config <path>`.
+command directly. MCP serving is always pinned to one workspace root so
+agent-supplied `path` values cannot pivot into unrelated repositories. By
+default the server pins to its own current working directory at startup, which
+is the project the agent was launched from. For non-default deployments you can
+override that pin with `--workspace-root <dir>` or
+`HIPPO_WORKSPACE_ROOT=<dir>`. `hippo setup` writes a plain `hippo mcp serve`
+entry into managed agent configs (no baked-in path), so the same global config
+keeps working as you switch between worktrees and sibling projects. The CLI
+commands below remain available for manual curation, debugging, and advanced
+workflows. Every command supports `--output text|json` and `--config <path>`.
 
 ## CLI surface
 
@@ -157,8 +165,8 @@ and `--config <path>`.
 | `hippo dream run` | Deterministic Dream phases (decay, stale, duplicate, low-quality, missing-metadata). |
 | `hippo dream review` | Resolve a pending suggestion (`accept` / `accept_with_rewrite` / `dismiss`). |
 | `hippo dream install` / `uninstall` / `status` | Manage the recurring launchd/systemd job and inspect scheduled-run health. |
-| `hippo mcp serve` | Serve the default entity-router MCP surface over stdio MCP. |
-| `hippo mcp serve --surface legacy` | Serve the pre-router MCP tool surface for local eval/debug compatibility. |
+| `hippo mcp serve` | Serve the default entity-router MCP surface over stdio MCP, rejecting paths outside the workspace root (defaults to cwd; override with `--workspace-root <dir>`). |
+| `hippo mcp serve --surface legacy` | Serve the pre-router MCP tool surface for local eval/debug compatibility, rejecting paths outside the workspace root (defaults to cwd; override with `--workspace-root <dir>`). |
 | `hippo mcp eval-toolset` | Compare model tool-use efficiency across legacy and entity MCP surfaces using the configured text provider. |
 
 Run any command with `--help` for full flag documentation.
@@ -186,6 +194,11 @@ The pre-router per-verb tool catalog is available with
 `hippo mcp serve --surface legacy` for local comparison and short-term debug
 compatibility during alpha.
 
+MCP does not create project rows by default. Run `hippo project init` or
+`hippo init` from a repository before using MCP tools there. The
+`--allow-project-provisioning` serve flag is an explicit compatibility escape
+hatch for trusted local workflows; leave it off for normal agent use.
+
 Hard delete is intentionally CLI-only — see
 [ADR-0015](docs/adr/0015-hard-delete-cli-only.md).
 
@@ -201,20 +214,25 @@ Hard delete is intentionally CLI-only — see
 
 ## Development
 
-This repository is organized as a Bun/Turborepo monorepo. `apps/hippo` is a
+This repository is organized as an aube/Turborepo monorepo. `apps/hippo` is a
 thin binary wrapper (`main.go` only) and `packages/core` (`@hippo/core`) owns
 the entire product implementation: the Cobra command tree (`packages/core/cli`,
 including `mcp serve`), the MCP server, the feature packages, and shared
 infrastructure — see [ADR-0033](docs/adr/0033-single-binary-core-workspace.md).
+The workspace uses `aube-lock.yaml` as the package lockfile and
+`packageManager: "npm@11.12.1"` only as Turborepo compatibility metadata until
+Turbo supports aube directly; aube is the package manager used for installs,
+scripts, CI, Docker builds, and hooks. The local `.npmrc` disables aube's
+package-manager strictness for that explicit compatibility exception.
 
 ```sh
-bun install
-bun run build           # turbo: builds apps/hippo
-bun run test            # turbo: unit tests across the monorepo
-bun run integration-tests
-bun run lint
-bun run fmt:check
-bun run check           # format:check + lint + check-types + test
+aube install --ignore-scripts
+aube run --no-install build           # turbo: builds apps/hippo
+aube run --no-install test            # turbo: unit tests across the monorepo
+aube run --no-install integration-tests
+aube run --no-install lint
+aube run --no-install fmt:check
+aube run --no-install check           # format:check + lint + check-types + test
 ```
 
 For Go-specific workflows, the `Makefile` exposes the underlying targets:
@@ -229,7 +247,7 @@ make vulncheck          # govulncheck
 To build only the binary app:
 
 ```sh
-bunx turbo run build --filter=@hippo/app
+aube run --no-install turbo -- run build --filter=@hippo/app
 ```
 
 Release automation is documented in [`docs/release.md`](docs/release.md).
