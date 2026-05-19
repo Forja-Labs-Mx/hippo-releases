@@ -2,6 +2,31 @@
 
 All notable changes to Hippo are documented in this file.
 
+## [v0.1.0-alpha.8] - 2026-05-19
+
+
+### Features
+
+- Add hippo upgrade command ([ef068f4](https://github.com/Forja-Labs-Mx/hippo/commit/ef068f4fa6b9c038e718dd431b7c8889e0e21a7b))
+- Refresh agent MCP entries on finalize ([99034f5](https://github.com/Forja-Labs-Mx/hippo/commit/99034f575263e16c95c5b31e2c4536971a9f1894))
+- Brand palette, pagination, and Review tab learnings ([5ed1696](https://github.com/Forja-Labs-Mx/hippo/commit/5ed16968de6d4092a7568ffb4e27b6601a5e373a))
+
+
+### Fixes
+
+- Publish Homebrew casks for prerelease tags and use the fully qualified tap
+  cask in install docs. ([ddde286](https://github.com/Forja-Labs-Mx/hippo/commit/ddde286defe44851895a51dfd15226ab97ce5367))
+- Resolve install target before rename to avoid Linux ENOENT ([38442b7](https://github.com/Forja-Labs-Mx/hippo/commit/38442b7e90cf81d5785609012438c18741e57f66))
+- Address CodeRabbit review feedback ([bd4da96](https://github.com/Forja-Labs-Mx/hippo/commit/bd4da96c41a180c118358b2b79fa455bd4ac70e4))
+- Address CodeRabbit review feedback on #202 ([a9cdeb1](https://github.com/Forja-Labs-Mx/hippo/commit/a9cdeb15d01edfdf44b7f849d178fdf898bc409d))
+- Return tea views from top-level shells ([cd98641](https://github.com/Forja-Labs-Mx/hippo/commit/cd986412762f1b24681d76c3272b39e487e3937c))
+- Finish bubbletea v2 key migration ([8388052](https://github.com/Forja-Labs-Mx/hippo/commit/8388052e6bec4e522c7656ddb3e420b264b6c99f))
+- Use KeyMod.Contains for modifier checks ([99705e5](https://github.com/Forja-Labs-Mx/hippo/commit/99705e5f8c1a0a23a9b7349afb36cc50724366d4))
+
+
+### Other
+
+- Partial migration to bubbletea/lipgloss/bubbles v2 ([6996745](https://github.com/Forja-Labs-Mx/hippo/commit/6996745214957c0981ce432673aeb98f92e3feb1))
 ## [v0.1.0-alpha.7] - 2026-05-18
 
 

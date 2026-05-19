@@ -69,10 +69,9 @@ to `main`.
 With Homebrew:
 
 ```sh
-brew tap Forja-Labs-Mx/tap
-brew install --cask hippo
-brew upgrade --cask hippo
-brew uninstall --cask hippo
+brew install --cask Forja-Labs-Mx/tap/hippo
+brew upgrade --cask Forja-Labs-Mx/tap/hippo
+brew uninstall --cask Forja-Labs-Mx/tap/hippo
 ```
 
 From a GitHub Release archive:
@@ -219,11 +218,13 @@ thin binary wrapper (`main.go` only) and `packages/core` (`@hippo/core`) owns
 the entire product implementation: the Cobra command tree (`packages/core/cli`,
 including `mcp serve`), the MCP server, the feature packages, and shared
 infrastructure — see [ADR-0033](docs/adr/0033-single-binary-core-workspace.md).
-The workspace uses `aube-lock.yaml` as the package lockfile and
-`packageManager: "npm@11.12.1"` only as Turborepo compatibility metadata until
-Turbo supports aube directly; aube is the package manager used for installs,
-scripts, CI, Docker builds, and hooks. The local `.npmrc` disables aube's
-package-manager strictness for that explicit compatibility exception.
+The workspace uses `aube-lock.yaml` as the package lockfile, with
+`pnpm-lock.yaml` and `pnpm-workspace.yaml` symlinked to the aube files so
+Turborepo can parse workspace metadata until it supports aube directly. The
+`packageManager: "pnpm@10.24.0"` field is compatibility metadata only; aube is
+the package manager used for installs, scripts, CI, Docker builds, and hooks.
+The local `.npmrc` disables aube's package-manager strictness for that explicit
+compatibility exception.
 
 ```sh
 aube install --ignore-scripts
