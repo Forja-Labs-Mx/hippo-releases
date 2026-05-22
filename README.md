@@ -74,6 +74,12 @@ brew upgrade --cask Forja-Labs-Mx/tap/hippo
 brew uninstall --cask Forja-Labs-Mx/tap/hippo
 ```
 
+To let Hippo upgrade itself after any supported release install:
+
+```sh
+hippo upgrade
+```
+
 From a GitHub Release archive:
 
 ```sh
@@ -91,14 +97,26 @@ sudo dnf install ./hippo_VERSION_linux_amd64.rpm
 sudo apk add --allow-untrusted ./hippo_VERSION_linux_amd64.apk
 ```
 
-To build from source, clone the repo and check out a release tag:
+To install from source, clone the repo, check out a release tag, and run the
+install target:
 
 ```sh
 git checkout vX.Y.Z
+make install
+```
+
+`make install` first creates a `pre-install` backup with the existing `hippo`
+binary in Go's install directory when one exists, then builds with the same
+static release flags used for published artifacts, installs the binary, and
+runs non-interactive setup so pending migrations apply with the new binary.
+
+To build a local binary without installing or migrating:
+
+```sh
 CGO_ENABLED=0 go build -trimpath -o hippo ./apps/hippo
 ```
 
-Or, using the monorepo's Turborepo wiring:
+Or, using the monorepo's Turborepo wiring for a build-only artifact:
 
 ```sh
 aube install --ignore-scripts
@@ -184,7 +202,7 @@ Run any command with `--help` for full flag documentation.
 - `hippo_project(mode: "ensure" | "group_create" | "group_add" |
   "group_remove" | "group_list" | "group_show" | "group_relate")`
 - `hippo_preference(mode: "set" | "get" | "list" | "delete")`
-- **Retrieval / governance** — `hippo_search`, `hippo_ask`, `hippo_audit`,
+- **Retrieval / governance** — `hippo_recall`, `hippo_ask`, `hippo_reflect`, `hippo_audit`,
   plus conditional `hippo_dream(mode: "judge")`
 - **Agent guidance** — server instructions plus `hippo_memory_policy` prompt and
   `hippo://memory-policy` resource.
@@ -194,7 +212,7 @@ The pre-router per-verb tool catalog is available with
 compatibility during alpha.
 
 MCP does not create project rows by default. Run `hippo project init` or
-`hippo init` from a repository before using MCP tools there. The
+`hippo init` from the target repository or non-git directory before using MCP tools there. The
 `--allow-project-provisioning` serve flag is an explicit compatibility escape
 hatch for trusted local workflows; leave it off for normal agent use.
 

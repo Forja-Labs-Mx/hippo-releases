@@ -35,8 +35,8 @@ hybrid search, Dream-Mode hygiene, MCP-native. Everything else is deferred.
 - MCP stdio server with the full tool surface: `hippo_memory_add`,
   `hippo_memory_add_structured`, `hippo_memory_get`, `hippo_memory_update`,
   `hippo_memory_archive`, `hippo_memory_reinforce`, `hippo_memory_relate`,
-  `hippo_memory_promote`, `hippo_search`, `hippo_memory_timeline`,
-  `hippo_ask`, `hippo_project_ensure`, `hippo_preference_set` /
+  `hippo_memory_promote`, `hippo_recall`, `hippo_memory_timeline`,
+  `hippo_ask`, `hippo_reflect`, `hippo_project_ensure`, `hippo_preference_set` /
   `_get` / `_list` / `_delete`, `hippo_judge`, `hippo_audit`. (Hard
   delete is intentionally CLI-only — see
   [ADR-0015](adr/0015-hard-delete-cli-only.md).)
@@ -57,7 +57,7 @@ hybrid search, Dream-Mode hygiene, MCP-native. Everything else is deferred.
 
 **Out of scope (deferred to later milestones).**
 
-- HTTP API (current Alpha surfaces are CLI, MCP, and TUI; future HTTP
+- HTTP API (current Alpha surfaces are CLI, MCP, and setup/init wizards; future HTTP
   should be exposed as another `hippo` command from the same binary unless
   a later ADR splits deployment artifacts).
 - Multi-device / cloud sync.
@@ -128,12 +128,6 @@ the change.
   `reinforcement_count`, and the source memory's `ProjectGroups`
   into the score and payload; agent-sourced suggestions include the
   same context for human/LLM review.
-- **Debug TUI.** `hippo ui` provides a multi-tab master-detail surface
-  (Memories | Sessions | Learnings | Review) with inline-chip filters,
-  `/` hybrid search, archive-only destructive CRUD, and promotion-review
-  flows for Dream- and agent-suggested promotions. See
-  [ADR-0037](adr/0037-tui-in-process-service-link.md) and
-  [ADR-0038](adr/0038-tui-access-scope.md).
 - **Onboarding TUIs.** `hippo setup` and `hippo init` can run through
   TUIs that wrap, rather than replace, the existing flag-based forms.
   `--no-tui` and non-TTY callers keep the scripted path. See
@@ -179,7 +173,7 @@ future Beta must ship that exact scope.
 - Does Hippo reliably help real agents and humans remember useful context
   across sessions?
 - Which workflows produce durable memories, and which produce noise?
-- Which surfaces are actually needed for curation: CLI, MCP, TUI, WebUI,
+- Which surfaces are actually needed for curation: CLI, MCP, WebUI,
   or something smaller?
 - Which features are essential enough to stabilize before any beta promise?
 
@@ -207,7 +201,7 @@ future Beta must ship that exact scope.
 Captured so the ideas aren't lost. No commitment, no sequencing.
 
 - Local WebUI (HTMX-rendered, `127.0.0.1`-bound, single binary) for users
-  who'd rather click than navigate a CLI or TUI. A prior Beta draft put TUI
+  who'd rather click than navigate a CLI. A prior Beta draft put Debug TUI
   first, but no Beta scope is currently committed; the WebUI may follow once
   a real consumer (the user themselves, or an external integration) makes the
   API shape concrete.

@@ -2,6 +2,109 @@
 
 All notable changes to Hippo are documented in this file.
 
+## [v0.1.0-alpha.9] - 2026-05-22
+
+### Build
+
+- Add source install target ([0f3f4e6](https://github.com/Forja-Labs-Mx/hippo/commit/0f3f4e629690f166d0e312022147597d5fb557d0))
+
+### CI
+
+- Opt out of pending invariants ([3a752f4](https://github.com/Forja-Labs-Mx/hippo/commit/3a752f4f6f29db5dfa10a14a994ca185637d5d3c))
+
+
+### Documentation
+
+- Scope memory block to installed/initialized agents ([55da72e](https://github.com/Forja-Labs-Mx/hippo/commit/55da72e72c5874f958507bc4d9da2b5f6a429d5d))
+- Design-system note in chrome/doc.go (HIP-129) ([c12e776](https://github.com/Forja-Labs-Mx/hippo/commit/c12e7763b2c7265f9811287b6e45b332eeb21a82))
+- Complete role mappings + full InfoType names in chrome doc ([e2e019d](https://github.com/Forja-Labs-Mx/hippo/commit/e2e019d011f8775e4f73e93bd44ad7f5d3317fec))
+
+
+### Features
+
+- Add shared section headers ([5c32fa9](https://github.com/Forja-Labs-Mx/hippo/commit/5c32fa9d409af18ed631a8f08480953251fe2124))
+- Replace selection bar with ▌ indicator (HIP-123) ([825fcba](https://github.com/Forja-Labs-Mx/hippo/commit/825fcba6abcd7c95b60f1c145e56614f50b02869))
+- Chrome.StatusBar with ephemeral toasts (HIP-128) ([1f2e0a6](https://github.com/Forja-Labs-Mx/hippo/commit/1f2e0a654a4b6be043974b6390ac6f874d31022e))
+- Inverse-video cursor + dimmed placeholder ([45e1034](https://github.com/Forja-Labs-Mx/hippo/commit/45e1034e7463c2442a2c7e62f5d8649c6705e7af))
+- Responsive cards + drop Dream phases UI ([180ba11](https://github.com/Forja-Labs-Mx/hippo/commit/180ba11ffc2c0e80db70ff4e00f657a0e9617e26))
+- Evolve Hippo retrieval surface ([a95bd83](https://github.com/Forja-Labs-Mx/hippo/commit/a95bd83d259b128e645ce853614e128ce28838f4))
+- Add hippo reflect tool loop ([e42ce15](https://github.com/Forja-Labs-Mx/hippo/commit/e42ce15676a74750d1f7a99c97bf39e0d6682257))
+- Support partial run resumes ([1bae61a](https://github.com/Forja-Labs-Mx/hippo/commit/1bae61aec4183e4d47916471375b0507c2039a64))
+- Local backup strategy for the Hippo SQLite database ([9960255](https://github.com/Forja-Labs-Mx/hippo/commit/9960255a09ed2db4d14ac2b4c0505b0e4e3de5ed))
+- Calibrate memory priority ([a699403](https://github.com/Forja-Labs-Mx/hippo/commit/a69940337c2d49078fb5b1125b260e95f0a16912))
+- Make category summaries deterministic-first ([684719e](https://github.com/Forja-Labs-Mx/hippo/commit/684719efa09fa455bbff577e83082b5f8f82fbb6))
+- Auto-create relationship candidates ([f2d59c3](https://github.com/Forja-Labs-Mx/hippo/commit/f2d59c36435f959b924540eb8fca83f8d0eafe51))
+- Learning-first promotion candidate pipeline (HIP-145) ([54a2ac2](https://github.com/Forja-Labs-Mx/hippo/commit/54a2ac2068508f4a37700af734f0423e348ae242))
+- Stage contradiction evidence ([3bdd6be](https://github.com/Forja-Labs-Mx/hippo/commit/3bdd6bee28662bc7977201b928b7c331d05aab38))
+- Delay duplicate archival until repeated evidence ([80481e6](https://github.com/Forja-Labs-Mx/hippo/commit/80481e65d0893d5147f34f84ac0751d19bb2ad40))
+- Add undo for autonomous actions and explainability metrics (HIP-146) ([579e83b](https://github.com/Forja-Labs-Mx/hippo/commit/579e83b5e337e7b4937aec09ae38ec7225b6ead4))
+
+
+### Fixes
+
+- Pin textinput widgets to bubbles v2 dark styles ([a2d66ba](https://github.com/Forja-Labs-Mx/hippo/commit/a2d66bab5a49acf9a4f4568ba559c202c50a4e95))
+- Clean alt-screen migration comment ([f264107](https://github.com/Forja-Labs-Mx/hippo/commit/f2641078dd82f55ffb400e629045a3a66870e72c))
+- Support API key paste and reuse ([f43741a](https://github.com/Forja-Labs-Mx/hippo/commit/f43741af5701032a4c5342751fbdc29a958ecedb))
+- Anchor chrome palette on brand colors ([dbd62be](https://github.com/Forja-Labs-Mx/hippo/commit/dbd62be2b5d9d623f33e0694d82fb4e489db54f4))
+- Support marker-backed projects ([5bad2e9](https://github.com/Forja-Labs-Mx/hippo/commit/5bad2e9e8890c95f1bfd1e657ff49d169b41402b))
+- Apply session preference in reflect recall ([e0a3451](https://github.com/Forja-Labs-Mx/hippo/commit/e0a345131a68844ad1c6c9c9cdc363fd85b71985))
+- Split RequiredAnchors into search vs recovery surfaces ([eefe112](https://github.com/Forja-Labs-Mx/hippo/commit/eefe112ccd2affe408271c912ad65dd470db735a))
+- Harden reflect review edge cases ([8b47181](https://github.com/Forja-Labs-Mx/hippo/commit/8b4718108d8263e23bc0f590ef51e193cc5b99f7))
+- Include reflect learning trends ([7e34a65](https://github.com/Forja-Labs-Mx/hippo/commit/7e34a6595bb5788f6d3ed70320097c976ca87011))
+- Clarify legacy search alias guidance ([bd10f8b](https://github.com/Forja-Labs-Mx/hippo/commit/bd10f8bfa60eb54d0cdc9724e2d3a4ee3bfc1db8))
+- Share Dream half-life with Learning trends ([12a0dc5](https://github.com/Forja-Labs-Mx/hippo/commit/12a0dc5caf9a7103517138d0d7c6e85955893da2))
+- Address partial run review feedback ([04012be](https://github.com/Forja-Labs-Mx/hippo/commit/04012be0389d2b534a9ed45f11cf1bee20f521e6))
+- Address PR review feedback ([c4b1df6](https://github.com/Forja-Labs-Mx/hippo/commit/c4b1df64d27b63adaef5c66d8524c2ec45f6f759))
+- Skip duplicate relationship verdicts ([572e6b7](https://github.com/Forja-Labs-Mx/hippo/commit/572e6b7f62faba8eeab6b22cf0564edb74f9b9c0))
+- Address PR review for HIP-145 learning-first pipeline ([99defec](https://github.com/Forja-Labs-Mx/hippo/commit/99defec0277e82c7e430ebbe4e790726825713fd))
+- Stabilize duplicate winner tie-break ([66191fb](https://github.com/Forja-Labs-Mx/hippo/commit/66191fb98a87a71fd080e7d76069788d59212b7b))
+- Fail relationship undo when audit payload is incomplete ([4036448](https://github.com/Forja-Labs-Mx/hippo/commit/40364488217f63c55d89a4a663443111286902c7))
+- Detect real terminals for setup prompts ([e6a6a13](https://github.com/Forja-Labs-Mx/hippo/commit/e6a6a138244faaf5a8a24f24b149b995c7c516c8))
+- Verify Linux upgrade packages ([aaab27a](https://github.com/Forja-Labs-Mx/hippo/commit/aaab27a6271e83a1e4b1af95e8bceaafb3d65db3))
+- Prune automatic snapshots ([4b92e5c](https://github.com/Forja-Labs-Mx/hippo/commit/4b92e5c404ffb9a998e4dc5f06a3b84a21756f79))
+- Reject undo for derived priority audits ([46257e9](https://github.com/Forja-Labs-Mx/hippo/commit/46257e96a449b66dc2db6806c8170b3460804da7))
+- Require stdout TTY for setup TUI ([c9aee97](https://github.com/Forja-Labs-Mx/hippo/commit/c9aee970929cf1891543904e8cd503c138d4364c))
+- Avoid counting idempotent session summary replay ([d1d3311](https://github.com/Forja-Labs-Mx/hippo/commit/d1d33116363df6d06a21a941519bce6f8b180da6))
+- Continue after session summary partial ([e037fd0](https://github.com/Forja-Labs-Mx/hippo/commit/e037fd05d5285f52a6b0352dc21e7ac9bc3da729))
+- Guard InMemoryRepo ids map for zero-value construction ([f7f2928](https://github.com/Forja-Labs-Mx/hippo/commit/f7f2928f30d06b09fb263b9148426b9e224b7325))
+- Tighten provider usage attribution and validation ([18b9029](https://github.com/Forja-Labs-Mx/hippo/commit/18b9029ecdce1b6736a578dbe52d0f1945b40461))
+
+
+### Other
+
+- Rename MCP search surface to recall ([24c8ba0](https://github.com/Forja-Labs-Mx/hippo/commit/24c8ba0324994c3c3cbf64a0a46da9a3d73a8c33))
+- Add Dream prompt budget projections ([ac52d83](https://github.com/Forja-Labs-Mx/hippo/commit/ac52d83e6c0718eefa507c06225d6da7bc86e42d))
+- Address Dream prompt budget review ([e6d2cb7](https://github.com/Forja-Labs-Mx/hippo/commit/e6d2cb75133f7a0cd5ec5eeb68d564312444701c))
+- Bound Dream contradiction prompts ([52330d3](https://github.com/Forja-Labs-Mx/hippo/commit/52330d3541bd531842b424814e3fb905ba5b0bb7))
+- Use bounded contradiction shortlist ([9853b47](https://github.com/Forja-Labs-Mx/hippo/commit/9853b47c943d1368e6d502869b59c30a7bbfffe7))
+- Add provider usage telemetry ([af5632a](https://github.com/Forja-Labs-Mx/hippo/commit/af5632ace4c77f87bc52a2b94f68ee8b8b71470d))
+- Address provider usage review feedback ([476aec7](https://github.com/Forja-Labs-Mx/hippo/commit/476aec7d43c1bbc1f7b639d3fe15cda0f949d598))
+- Harden provider usage event validation ([3974361](https://github.com/Forja-Labs-Mx/hippo/commit/3974361163e8840f295e32430aa876d49b6951fb))
+- Simplify provider usage telemetry ([4cd7e60](https://github.com/Forja-Labs-Mx/hippo/commit/4cd7e6028113e6824de5bd66004862e34e575756))
+
+
+### Refactoring
+
+- Centralize glyphs in chrome/glyphs.go (HIP-126) ([760bd37](https://github.com/Forja-Labs-Mx/hippo/commit/760bd37d2a7d4c5e4b7b3a94201c74b85dce71a4))
+- Simplify backup package per code review ([f4b87bf](https://github.com/Forja-Labs-Mx/hippo/commit/f4b87bfccdbcbc01810384edef14444ccaf5fc5f))
+- Remove debug UI ([da7bb78](https://github.com/Forja-Labs-Mx/hippo/commit/da7bb784a313170cb7e31a30b9dc6fe32c867817))
+- Route new SQLite undo/recent-actions methods through sqlc ([5f70236](https://github.com/Forja-Labs-Mx/hippo/commit/5f70236ccf55b7c1a1a3980e28025ae43186c5b8))
+
+
+### Tests
+
+- Remove lipgloss profile pinning ([dbe98cb](https://github.com/Forja-Labs-Mx/hippo/commit/dbe98cb24805078fe9e671a7b2594caac872f5f2))
+- Move teatest helper to v2 ([06ac6ee](https://github.com/Forja-Labs-Mx/hippo/commit/06ac6ee09fd624d246e9d8ef1ed2a6f54e5bb7ae))
+- Add baseline optimization safety coverage ([4392adc](https://github.com/Forja-Labs-Mx/hippo/commit/4392adc29096c3879d55a4cc3a1ed6a9e4a8de06))
+- Gate pending optimization invariants ([6e8e763](https://github.com/Forja-Labs-Mx/hippo/commit/6e8e763ee981ef7ed425e97a6ffe0315f0a62b0a))
+- Enforce hippo_reflect guidance ([1673906](https://github.com/Forja-Labs-Mx/hippo/commit/1673906d79dd3d84c13973632493b4e915ca2dea))
+- Guard historical Dream half-life default ([77d1b30](https://github.com/Forja-Labs-Mx/hippo/commit/77d1b30840d0ff627935d3550c022a458639484e))
+- Isolate prompt penalty integration ([e9416e6](https://github.com/Forja-Labs-Mx/hippo/commit/e9416e6c9f156ccf93a7bdea8fc3235bfb845934))
+- Seed relationship candidate for dream LLM integration ([b921da9](https://github.com/Forja-Labs-Mx/hippo/commit/b921da992ddcd17f862a3e5a335b8d4d0f4204e1))
+- Add scale verification harness ([1563710](https://github.com/Forja-Labs-Mx/hippo/commit/15637102765683272d400982d6a4f9f8ce6aece4))
+- Cover reflect cancellation and expand ([ba035a0](https://github.com/Forja-Labs-Mx/hippo/commit/ba035a0f675b30018195c4ccce5acf0c10df3b05))
+- Tolerate EOF on server shutdown ([028a1f8](https://github.com/Forja-Labs-Mx/hippo/commit/028a1f8da9bce516788cedfd5f125e838d192f04))
+- Accept closed pipe on shutdown ([8debeef](https://github.com/Forja-Labs-Mx/hippo/commit/8debeef08d8d5a86aed696b80efab70a89f464b0))
 ## [v0.1.0-alpha.8] - 2026-05-19
 
 
