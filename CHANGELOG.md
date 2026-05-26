@@ -2,7 +2,7 @@
 
 All notable changes to Hippo are documented in this file.
 
-## [v0.1.0-alpha.10] - 2026-05-26
+## [v0.1.0-alpha.11] - 2026-05-26
 
 
 ### Chores
@@ -19,15 +19,12 @@ All notable changes to Hippo are documented in this file.
 
 ### Fixes
 
-- Address audit drain review comments ([548e8d9](https://github.com/Forja-Labs-Mx/hippo/commit/548e8d98ce92d70ab7771b82c8f79fb3cc7c61b1))
 - Remove aggregate rehydration footguns ([49ac541](https://github.com/Forja-Labs-Mx/hippo/commit/49ac541b4898272ab8a871be0ef73cfb3e058f3f))
 - Ignore typed nil audit drains ([b3d2899](https://github.com/Forja-Labs-Mx/hippo/commit/b3d2899b9492029e509654ece36d36a7d3c54a2c))
 - Fix learning repo review findings ([754aa64](https://github.com/Forja-Labs-Mx/hippo/commit/754aa64efea9792a18b70864966f672be1f09c27))
 - Keep relationship audits project agnostic ([1b816ab](https://github.com/Forja-Labs-Mx/hippo/commit/1b816ab84a7f36c8f9ae0df62f321b336cb51383))
 - Scope relationship audit events by event ([8fd5c4c](https://github.com/Forja-Labs-Mx/hippo/commit/8fd5c4c55e1837bf7648f7d6bf54c774922ad857))
-- Address aggregate review feedback ([c7be35b](https://github.com/Forja-Labs-Mx/hippo/commit/c7be35b032d94164d619ec6428ac7eff35228915))
 - Harden preference drains and usage accessors ([f514c03](https://github.com/Forja-Labs-Mx/hippo/commit/f514c0390feb23c706f5106a87de91117f129a6b))
-- Address project domain review findings ([7cc4781](https://github.com/Forja-Labs-Mx/hippo/commit/7cc4781d02585c32a108f7d468f3e5dbdd0a1f51))
 - Preserve empty pair snapshot arrays ([d4877ce](https://github.com/Forja-Labs-Mx/hippo/commit/d4877ce70079ae942b2dec0690ffe8f6dc82080d))
 - Fix orbit promotion access checks ([ec8a376](https://github.com/Forja-Labs-Mx/hippo/commit/ec8a3762a340a20e0ec85480c40a0f48ebe9bd60))
 - Handle unborn git repo markers ([4ba9ddc](https://github.com/Forja-Labs-Mx/hippo/commit/4ba9ddcee9afbf5eaff820bde45b8ea8e057bb50))
@@ -102,10 +99,7 @@ All notable changes to Hippo are documented in this file.
 - Include reflect learning trends ([7e34a65](https://github.com/Forja-Labs-Mx/hippo/commit/7e34a6595bb5788f6d3ed70320097c976ca87011))
 - Clarify legacy search alias guidance ([bd10f8b](https://github.com/Forja-Labs-Mx/hippo/commit/bd10f8bfa60eb54d0cdc9724e2d3a4ee3bfc1db8))
 - Share Dream half-life with Learning trends ([12a0dc5](https://github.com/Forja-Labs-Mx/hippo/commit/12a0dc5caf9a7103517138d0d7c6e85955893da2))
-- Address partial run review feedback ([04012be](https://github.com/Forja-Labs-Mx/hippo/commit/04012be0389d2b534a9ed45f11cf1bee20f521e6))
-- Address PR review feedback ([c4b1df6](https://github.com/Forja-Labs-Mx/hippo/commit/c4b1df64d27b63adaef5c66d8524c2ec45f6f759))
 - Skip duplicate relationship verdicts ([572e6b7](https://github.com/Forja-Labs-Mx/hippo/commit/572e6b7f62faba8eeab6b22cf0564edb74f9b9c0))
-- Address PR review for HIP-145 learning-first pipeline ([99defec](https://github.com/Forja-Labs-Mx/hippo/commit/99defec0277e82c7e430ebbe4e790726825713fd))
 - Stabilize duplicate winner tie-break ([66191fb](https://github.com/Forja-Labs-Mx/hippo/commit/66191fb98a87a71fd080e7d76069788d59212b7b))
 - Fail relationship undo when audit payload is incomplete ([4036448](https://github.com/Forja-Labs-Mx/hippo/commit/40364488217f63c55d89a4a663443111286902c7))
 - Detect real terminals for setup prompts ([e6a6a13](https://github.com/Forja-Labs-Mx/hippo/commit/e6a6a138244faaf5a8a24f24b149b995c7c516c8))
@@ -123,11 +117,9 @@ All notable changes to Hippo are documented in this file.
 
 - Rename MCP search surface to recall ([24c8ba0](https://github.com/Forja-Labs-Mx/hippo/commit/24c8ba0324994c3c3cbf64a0a46da9a3d73a8c33))
 - Add Dream prompt budget projections ([ac52d83](https://github.com/Forja-Labs-Mx/hippo/commit/ac52d83e6c0718eefa507c06225d6da7bc86e42d))
-- Address Dream prompt budget review ([e6d2cb7](https://github.com/Forja-Labs-Mx/hippo/commit/e6d2cb75133f7a0cd5ec5eeb68d564312444701c))
 - Bound Dream contradiction prompts ([52330d3](https://github.com/Forja-Labs-Mx/hippo/commit/52330d3541bd531842b424814e3fb905ba5b0bb7))
 - Use bounded contradiction shortlist ([9853b47](https://github.com/Forja-Labs-Mx/hippo/commit/9853b47c943d1368e6d502869b59c30a7bbfffe7))
 - Add provider usage telemetry ([af5632a](https://github.com/Forja-Labs-Mx/hippo/commit/af5632ace4c77f87bc52a2b94f68ee8b8b71470d))
-- Address provider usage review feedback ([476aec7](https://github.com/Forja-Labs-Mx/hippo/commit/476aec7d43c1bbc1f7b639d3fe15cda0f949d598))
 - Harden provider usage event validation ([3974361](https://github.com/Forja-Labs-Mx/hippo/commit/3974361163e8840f295e32430aa876d49b6951fb))
 - Simplify provider usage telemetry ([4cd7e60](https://github.com/Forja-Labs-Mx/hippo/commit/4cd7e6028113e6824de5bd66004862e34e575756))
 
@@ -169,8 +161,6 @@ All notable changes to Hippo are documented in this file.
 - Publish Homebrew casks for prerelease tags and use the fully qualified tap
   cask in install docs. ([ddde286](https://github.com/Forja-Labs-Mx/hippo/commit/ddde286defe44851895a51dfd15226ab97ce5367))
 - Resolve install target before rename to avoid Linux ENOENT ([38442b7](https://github.com/Forja-Labs-Mx/hippo/commit/38442b7e90cf81d5785609012438c18741e57f66))
-- Address CodeRabbit review feedback ([bd4da96](https://github.com/Forja-Labs-Mx/hippo/commit/bd4da96c41a180c118358b2b79fa455bd4ac70e4))
-- Address CodeRabbit review feedback on #202 ([a9cdeb1](https://github.com/Forja-Labs-Mx/hippo/commit/a9cdeb15d01edfdf44b7f849d178fdf898bc409d))
 - Return tea views from top-level shells ([cd98641](https://github.com/Forja-Labs-Mx/hippo/commit/cd986412762f1b24681d76c3272b39e487e3937c))
 - Finish bubbletea v2 key migration ([8388052](https://github.com/Forja-Labs-Mx/hippo/commit/8388052e6bec4e522c7656ddb3e420b264b6c99f))
 - Use KeyMod.Contains for modifier checks ([99705e5](https://github.com/Forja-Labs-Mx/hippo/commit/99705e5f8c1a0a23a9b7349afb36cc50724366d4))
@@ -242,7 +232,6 @@ All notable changes to Hippo are documented in this file.
 ### Other
 
 - Reduce MCP tool count with entity routers ([17e86c1](https://github.com/Forja-Labs-Mx/hippo/commit/17e86c1913b4cfeb43d3b4efaf5dc800baefd23f))
-- Address MCP toolset review feedback ([bc3abb9](https://github.com/Forja-Labs-Mx/hippo/commit/bc3abb9ac461e56f5d96627c1c70fe2863ac1260))
 ## [v0.1.0-alpha.5] - 2026-05-17
 
 
@@ -322,7 +311,6 @@ All notable changes to Hippo are documented in this file.
 - Exclude generated db code from errcheck ([d24d994](https://github.com/Forja-Labs-Mx/hippo/commit/d24d994b8690dd954b0407b936c56a199bfb399e))
 - Bound suggester ctx and cap dropdown rows (HIP-84) ([ad593c1](https://github.com/Forja-Labs-Mx/hippo/commit/ad593c189112550de522d4ff9eead3b70ceffd7a))
 - Link sources for protected learnings ([1b720d7](https://github.com/Forja-Labs-Mx/hippo/commit/1b720d7549189cf0ee0da21e31fa12a1a32f2bcc))
-- Address CodeRabbit review on the harness reframe ([784003f](https://github.com/Forja-Labs-Mx/hippo/commit/784003f0ef4f7c842f5060853300f296891f4fd3))
 
 
 ### Other
@@ -411,7 +399,6 @@ All notable changes to Hippo are documented in this file.
 - Match topic key project flag ([42c47f4](https://github.com/Forja-Labs-Mx/hippo/commit/42c47f4eb8a8d1135638878cda160fc649a3995f))
 - Expose list pagination cursor ([25866e6](https://github.com/Forja-Labs-Mx/hippo/commit/25866e66a4e25e25f40e7f99a5b74d175a9dacbc))
 - Validate topic key suggestions ([fad7d49](https://github.com/Forja-Labs-Mx/hippo/commit/fad7d49437bf693eb7a238137d2477e254da3fb7))
-- Address learnings migration review ([c22c8ca](https://github.com/Forja-Labs-Mx/hippo/commit/c22c8ca5f1dff80b75fc70515e12d511be032ab7))
 - Wire embedder + overfetch in TUI search adapter ([76b72bf](https://github.com/Forja-Labs-Mx/hippo/commit/76b72bf2bc6eca0d0e780600ba146ce5a98926cc))
 - Fail fast on embedder setup errors in hippo ui ([ab0a152](https://github.com/Forja-Labs-Mx/hippo/commit/ab0a1528e03a71c97599be8815b33e203a0f92ef))
 - Publish artifacts to public repos ([a39ad4f](https://github.com/Forja-Labs-Mx/hippo/commit/a39ad4f47c45fad807f2d506c28af94725cd5aaf))
@@ -420,7 +407,6 @@ All notable changes to Hippo are documented in this file.
 - Synapse cursor disappears after scroll back into hero ([6378224](https://github.com/Forja-Labs-Mx/hippo/commit/6378224bd833827b3b6d58d4e9bb3522deef1855))
 - Ground every copy claim in README, ADRs, and source ([b586778](https://github.com/Forja-Labs-Mx/hippo/commit/b586778b1ab8ba5a8d414035e334e362fcb52be1))
 - Shift Synapse gravity well right so graph clears the headline ([3510a32](https://github.com/Forja-Labs-Mx/hippo/commit/3510a32bee2430adb7a0ad2ed37db4a4fb2239fb))
-- Address CodeRabbit review (dev host binding + link affordance) ([980bf90](https://github.com/Forja-Labs-Mx/hippo/commit/980bf90a6ab9e8109333bda005fde6c8a57a07f9))
 - /download "From source code" — access by request ([28b7046](https://github.com/Forja-Labs-Mx/hippo/commit/28b70464211d1e19396cb94463d429de3d9e14e8))
 - Make the custom cursor snap to the pointer ([7df5782](https://github.com/Forja-Labs-Mx/hippo/commit/7df5782ae70dbca41382fc5b439e0288aae1b254))
 - Repoint live pages from hippo to hippo-releases ([f7caf84](https://github.com/Forja-Labs-Mx/hippo/commit/f7caf84af3a84e2778c30177af5c45c979337651))
@@ -497,7 +483,6 @@ All notable changes to Hippo are documented in this file.
 - Add language hints to layout fences ([87b381e](https://github.com/Forja-Labs-Mx/hippo/commit/87b381e5c72101ee8b95275a7715b57632188935))
 - Capture post-Alpha enhancements in README, roadmap, and ADRs ([208383c](https://github.com/Forja-Labs-Mx/hippo/commit/208383c8db34132596d1a6302a606a2f5ef33cf0))
 - Land Beta plan + ADRs 0037–0042; promote ADR-0027 ([a977152](https://github.com/Forja-Labs-Mx/hippo/commit/a9771522d6a0021fe81434eb62147ca17f2a155d))
-- Address CodeRabbit review on PR #64 ([e8f93e2](https://github.com/Forja-Labs-Mx/hippo/commit/e8f93e2ceec227c60a86594b4a9f58009c934c9e))
 - Clarify widget lifecycle contract ([b1532f1](https://github.com/Forja-Labs-Mx/hippo/commit/b1532f104b7a6537d0b4ef9fbbcf853b0d3614c1))
 - Clarify timestamp model boundary ([88208ae](https://github.com/Forja-Labs-Mx/hippo/commit/88208ae4cbb68494112f15a6d6bedaafb3437ab5))
 - Define work episode boundary ([15e2cb0](https://github.com/Forja-Labs-Mx/hippo/commit/15e2cb0840fd8385aa44af45198100017ea44532))
@@ -554,14 +539,11 @@ All notable changes to Hippo are documented in this file.
 
 ### Fixes
 
-- Address project init review feedback ([acf7490](https://github.com/Forja-Labs-Mx/hippo/commit/acf7490195e7bb6dca381091a102200a1e504df5))
 - Validate retrieval tool inputs ([369cc9d](https://github.com/Forja-Labs-Mx/hippo/commit/369cc9dc459066d91ff3825fb3c792b2e1ccce21))
 - Validate run flag bounds ([ef88fe0](https://github.com/Forja-Labs-Mx/hippo/commit/ef88fe09c9ac2a88f130c860c64c6cda752922bc))
 - Stabilize promotion idempotency key ([add4cdf](https://github.com/Forja-Labs-Mx/hippo/commit/add4cdfb42c4da246487642a3ec52b76f9e36c97))
-- Address HIP-24 review hardening comments ([7cbaf29](https://github.com/Forja-Labs-Mx/hippo/commit/7cbaf2959ecf437b736e4e06ea57ba729f11951c))
 - Fix embedding rebuild database path ([8f7ed20](https://github.com/Forja-Labs-Mx/hippo/commit/8f7ed20bba0f8e17d5406da38f4d228bb0ae2667))
 - Align CLI project identity resolution ([cc4ea0a](https://github.com/Forja-Labs-Mx/hippo/commit/cc4ea0a77a6785c6bda55b0c2cc97fcdb502e2fb))
-- Address project identity review feedback ([fc344a3](https://github.com/Forja-Labs-Mx/hippo/commit/fc344a35c37780bbcf14d7e83b2973d193d8e774))
 - Propagate git remote resolution errors ([44d9abd](https://github.com/Forja-Labs-Mx/hippo/commit/44d9abd537cc2641c531b23d1e40ba47634ab6c4))
 - Enforce access scope in raw SQL queries ([88eba66](https://github.com/Forja-Labs-Mx/hippo/commit/88eba6624937d51b0f9206799fc65c98b7ceea66))
 - Report scoped memory update misses ([55a54fb](https://github.com/Forja-Labs-Mx/hippo/commit/55a54fbc90248b1f870359dd5ccb5c56975a6ce1))
@@ -575,14 +557,12 @@ All notable changes to Hippo are documented in this file.
 - Default to setup database ([b190e63](https://github.com/Forja-Labs-Mx/hippo/commit/b190e6308572133162af86fb34056d06190b5fab))
 - Recover malformed Hippo agent blocks ([add3eea](https://github.com/Forja-Labs-Mx/hippo/commit/add3eea4469a7785ed3d68b7546b36df31e4ba05))
 - Dedupe promotion suggestions ([6b143d5](https://github.com/Forja-Labs-Mx/hippo/commit/6b143d542d32ea7ad8e780cd8eb5914165415b86))
-- Address group review feedback ([6fe7bbb](https://github.com/Forja-Labs-Mx/hippo/commit/6fe7bbb1a0da36d22fce7f375b4edcc5ee33c1c8))
 - Reject invalid --agent values before running setup ([9c2c384](https://github.com/Forja-Labs-Mx/hippo/commit/9c2c384d1c3aad2baccaf5a17525b7a15e516621))
 - Scope project listing ([2352944](https://github.com/Forja-Labs-Mx/hippo/commit/2352944fd9852950546f7675e6580fdc0cf5d0c3))
 - Include group-readable projects ([99763f9](https://github.com/Forja-Labs-Mx/hippo/commit/99763f9c9ff7bd8d9ec60eb469f66b00634c0cb6))
 - Sequence sessions migration after tui audit ([d28f15c](https://github.com/Forja-Labs-Mx/hippo/commit/d28f15c34c8082552716cdf7140a49908e2472a4))
 - Page review suggestions in sqlite ([61db6fc](https://github.com/Forja-Labs-Mx/hippo/commit/61db6fc92b8918153fed7c31c29acc8bd0084ad3))
 - Report setup TUI config load errors ([9799816](https://github.com/Forja-Labs-Mx/hippo/commit/9799816431ab0d81b4c5c6257227b35af9f09dcf))
-- Address HIP-49 review feedback ([cb32e9e](https://github.com/Forja-Labs-Mx/hippo/commit/cb32e9e7c59a3dfcfb15a41b27773271aa372fec))
 - Fallback for broad keyword queries ([161575b](https://github.com/Forja-Labs-Mx/hippo/commit/161575b9d0c427e0f9ac1e321cea6c3776f76786))
 
 
@@ -628,10 +608,8 @@ slices. ([91fa22c](https://github.com/Forja-Labs-Mx/hippo/commit/91fa22cf56f6220
 
 * Implement embedding job queue
 
-* Address embedding queue review feedback ([5cd3668](https://github.com/Forja-Labs-Mx/hippo/commit/5cd3668f1867151bf990ed9c0945ac19a61d3572))
 - Add memory search and ask CLI commands ([eb4aaaf](https://github.com/Forja-Labs-Mx/hippo/commit/eb4aaafa65d412c8a32a3ade27f40753ab21f889))
 - Add MCP memory tools ([400feef](https://github.com/Forja-Labs-Mx/hippo/commit/400feefde1c5021cb4e7403bafe8b59023223a1d))
-- Address MCP review feedback ([eec936c](https://github.com/Forja-Labs-Mx/hippo/commit/eec936cf8f0d7173b209fcedcca07640ff575d23))
 - Add LLM-backed memory structuring
 
 - Introduce OpenAI and Anthropic text providers
@@ -644,12 +622,10 @@ slices. ([91fa22c](https://github.com/Forja-Labs-Mx/hippo/commit/91fa22cf56f6220
 - Add tests for partial raw input and missing required fields ([93e1a82](https://github.com/Forja-Labs-Mx/hippo/commit/93e1a8234d78c5fe81d8eb80b76c2d6b982a0ed7))
 - Migrate workflows to Blacksmith ([1daface](https://github.com/Forja-Labs-Mx/hippo/commit/1daface73f68cf77de741a4bcd80dcf73adbdeeb))
 - Wire text provider config into runtime ([423ef2d](https://github.com/Forja-Labs-Mx/hippo/commit/423ef2de5e86d34740babaf25792af5f4bfe7eab))
-- Address text provider config review feedback ([af73489](https://github.com/Forja-Labs-Mx/hippo/commit/af73489ee9b63d1b6a54c8187cb88e0c5cab4d7a))
 - Add agent promotion suggestion flow ([ea1578a](https://github.com/Forja-Labs-Mx/hippo/commit/ea1578ab3c9f1a1509efbd2fab8b699e42c807ee))
 - Split Hippo into app and core workspaces ([0a751be](https://github.com/Forja-Labs-Mx/hippo/commit/0a751be935d4d78500022316272b7d96dd4e6419))
 - Add repository context ([7e10ef3](https://github.com/Forja-Labs-Mx/hippo/commit/7e10ef386e5ddc6d6d4d91cd8ba83fd8c0dcd075))
 - Add hippo skills and AGENTS reference ([9cb2d69](https://github.com/Forja-Labs-Mx/hippo/commit/9cb2d69b68fb9e9e4dd0a81bc6cf6d8d86f9aa91))
-- Address memory list review comments ([1b00018](https://github.com/Forja-Labs-Mx/hippo/commit/1b00018d835f2a33d10a03b3cd79d0ecb552d077))
 - Prevent silent audit rollback data loss ([7c7103c](https://github.com/Forja-Labs-Mx/hippo/commit/7c7103c9a38394c1d8a5c770da6f0a6208c5a96d))
 - Add frontend design skill ([9061dab](https://github.com/Forja-Labs-Mx/hippo/commit/9061daba9f1901276ddf6850be04cc64e1819e09))
 - Migrate workflows to Blacksmith ([ed118cf](https://github.com/Forja-Labs-Mx/hippo/commit/ed118cf9008a1142b9c5efaafacc59d73e22c6c5))
