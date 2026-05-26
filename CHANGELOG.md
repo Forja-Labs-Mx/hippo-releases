@@ -2,6 +2,55 @@
 
 All notable changes to Hippo are documented in this file.
 
+## [v0.1.0-alpha.10] - 2026-05-26
+
+
+### Chores
+
+- Clarify audit drain port boundary ([b1e11f1](https://github.com/Forja-Labs-Mx/hippo/commit/b1e11f1946e1e9d297f49dd334b03d55fada4c23))
+- Drop Close alias and clarify drain comment ([5b94d23](https://github.com/Forja-Labs-Mx/hippo/commit/5b94d23be58e5c6e52040919edebb040cd75ca78))
+- Remove migrated action aliases ([f6646a2](https://github.com/Forja-Labs-Mx/hippo/commit/f6646a2a9bee46e53333868c332c09153ae3e98f))
+
+
+### Documentation
+
+- Add synthesis save trigger and "Don't ask" anti-pattern ([263d691](https://github.com/Forja-Labs-Mx/hippo/commit/263d691abb7c7d5d88348a757e56cb5578c4ebd3))
+
+
+### Fixes
+
+- Address audit drain review comments ([548e8d9](https://github.com/Forja-Labs-Mx/hippo/commit/548e8d98ce92d70ab7771b82c8f79fb3cc7c61b1))
+- Remove aggregate rehydration footguns ([49ac541](https://github.com/Forja-Labs-Mx/hippo/commit/49ac541b4898272ab8a871be0ef73cfb3e058f3f))
+- Ignore typed nil audit drains ([b3d2899](https://github.com/Forja-Labs-Mx/hippo/commit/b3d2899b9492029e509654ece36d36a7d3c54a2c))
+- Fix learning repo review findings ([754aa64](https://github.com/Forja-Labs-Mx/hippo/commit/754aa64efea9792a18b70864966f672be1f09c27))
+- Keep relationship audits project agnostic ([1b816ab](https://github.com/Forja-Labs-Mx/hippo/commit/1b816ab84a7f36c8f9ae0df62f321b336cb51383))
+- Scope relationship audit events by event ([8fd5c4c](https://github.com/Forja-Labs-Mx/hippo/commit/8fd5c4c55e1837bf7648f7d6bf54c774922ad857))
+- Address aggregate review feedback ([c7be35b](https://github.com/Forja-Labs-Mx/hippo/commit/c7be35b032d94164d619ec6428ac7eff35228915))
+- Harden preference drains and usage accessors ([f514c03](https://github.com/Forja-Labs-Mx/hippo/commit/f514c0390feb23c706f5106a87de91117f129a6b))
+- Address project domain review findings ([7cc4781](https://github.com/Forja-Labs-Mx/hippo/commit/7cc4781d02585c32a108f7d468f3e5dbdd0a1f51))
+- Preserve empty pair snapshot arrays ([d4877ce](https://github.com/Forja-Labs-Mx/hippo/commit/d4877ce70079ae942b2dec0690ffe8f6dc82080d))
+- Fix orbit promotion access checks ([ec8a376](https://github.com/Forja-Labs-Mx/hippo/commit/ec8a3762a340a20e0ec85480c40a0f48ebe9bd60))
+- Handle unborn git repo markers ([4ba9ddc](https://github.com/Forja-Labs-Mx/hippo/commit/4ba9ddcee9afbf5eaff820bde45b8ea8e057bb50))
+
+
+### Refactoring
+
+- Add DDD primitives and audit drain ([a5988c6](https://github.com/Forja-Labs-Mx/hippo/commit/a5988c67109044a2b55f75d3ea6935fef9e00816))
+- Migrate sessions to domain aggregate ([acfa616](https://github.com/Forja-Labs-Mx/hippo/commit/acfa6160b3f225fe2b065e10a862bfe23b43eee2))
+- Migrate learning to DDD aggregate ([58dbb2e](https://github.com/Forja-Labs-Mx/hippo/commit/58dbb2eabf6a121ffe796d4f1a186d45a5994904))
+- Migrate memory aggregate to Save ([aa4f341](https://github.com/Forja-Labs-Mx/hippo/commit/aa4f3411329a8afb70eb4650f4f70ee1875e98c0))
+- Migrate prompt writes to domain aggregate ([840b2aa](https://github.com/Forja-Labs-Mx/hippo/commit/840b2aa4f2c95d496e5da66a788096c7e11e1a74))
+- Migrate preference and usage domains ([e3e41b7](https://github.com/Forja-Labs-Mx/hippo/commit/e3e41b7dd955e19e2bb8901c04a6aae9814bce46))
+- Migrate project context to aggregates ([cfa0055](https://github.com/Forja-Labs-Mx/hippo/commit/cfa0055b6308c122f5cc933a541d76550a04c77d))
+- Extract orbit suggestion context ([5b3eb6b](https://github.com/Forja-Labs-Mx/hippo/commit/5b3eb6b7ca3063b7b920c45475d703f02a660ead))
+- HIP-161 remove Dream cross-context writebacks ([00d8618](https://github.com/Forja-Labs-Mx/hippo/commit/00d86188d4e97230f6108091ea7a17f1201bb281))
+- Rename search context to recall ([d7dd97c](https://github.com/Forja-Labs-Mx/hippo/commit/d7dd97c3a7c931dccbff6cba01293526084e26c5))
+
+
+### Tests
+
+- Assert audit action for typed nil drain ([7a40071](https://github.com/Forja-Labs-Mx/hippo/commit/7a40071a0b582630bc155b35c6eb3542a299901c))
+- Update dream review audit ids ([de1a565](https://github.com/Forja-Labs-Mx/hippo/commit/de1a565377292d107bd7ffadcfd1db27ee4c2205))
 ## [v0.1.0-alpha.9] - 2026-05-22
 
 ### Build
